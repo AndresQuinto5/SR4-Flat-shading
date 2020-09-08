@@ -1,5 +1,5 @@
 #Andres Emilio Quinto Villagran
-#carne 18288
+#carne - 18288
 
 #Determinamos la clase objeto
 class Obj(object):
