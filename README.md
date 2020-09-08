@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # SR4-Flat-shading
 =======
 <<<<<<< HEAD
@@ -12,3 +13,8 @@ Este repositorio contiene los programas trabajados en clase ademas de el .obj el
 >>>>>>> d906af5... creacion del engine
 >>>>>>> 76140a4... Creacion del engine
 >>>>>>> d3dfa97... 1
+=======
+
+# SR4-Flat-shading
+
+>>>>>>> 1e954d58bfc74520ebb839e5c2813aeec035fecc
