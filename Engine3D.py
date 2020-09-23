@@ -1,9 +1,12 @@
 #Andrés Emilio Quinto Villagrán - 18288
-#Ejercicio: SR4_FLAT
+#Ejercicio: LAB-2 SHADERS
 
 from gl import Render
-from gl import color
+#from gl import color
 
 render = Render()
-render.load('cuerpo.obj', translate=(550, 50, 0), scale = (36, 36, 100))
+PLANET = "PLANET"
+
+
+render.load("sphere.obj", translate=(400, 400, 0), scale=(250, 250, 350), shape=PLANET)
 render.glFinish(filename='output.bmp')
