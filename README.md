@@ -9,4 +9,4 @@ Código fuente capaz de renderizar el zbuffer de su archivo obj
 
 El modelo debe ser cargado en el centro de la pantalla y debe ser completamente visible. Recuerden incluir instrucciones sobre como renderizar su modelo y sobre cómo renderizar su zbuffer.
 
-![](out.bmp) 
+![](output.bmp) 
