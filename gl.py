@@ -1,16 +1,10 @@
-<<<<<<< HEAD
-#Andres Emilio Quinto Villagran
-#Carne 18288
-#Laboratorio 3 / OBJ
+#AndresQ 18288  
+#Lab 4
 
-import struct
-from obj import Obj
-=======
 import struct
 from obj import Obj
 import random
 from collections import namedtuple
->>>>>>> eb246f8... Fixed error
 
 
 def char(myChar):
@@ -21,22 +15,15 @@ def word(myChar):
 	
 def dword(myChar):
 	return struct.pack('=l', myChar)
-<<<<<<< HEAD
-
-=======
->>>>>>> eb246f8... Fixed error
 def normalizeColorArray(colors_array):
     return [round(i*255) for i in colors_array]
 
 def color(r,g,b):
 	return bytes([b, g, r])
 
-<<<<<<< HEAD
-#Por motivos practicos seteo el color para mi fondo siempre.
-Dark = color(0,0,0)
-=======
 V2 = namedtuple('Vertex2', ['x', 'y'])
 V3 = namedtuple('Vertex3', ['x', 'y', 'z'])
+
 def sum(v0, v1):
    
     return V3(v0.x + v1.x, v0.y + v1.y, v0.z + v1.z)
@@ -103,23 +90,10 @@ def barycentric(A, B, C, P):
 
     return w, v, u
 
->>>>>>> eb246f8... Fixed error
 
 class Render(object):
     def __init__(self):
         self.framebuffer = []
-<<<<<<< HEAD
-        self.width = 1200
-        self.height = 1200
-        self.viewport_x = 0
-        self.viewport_y = 0
-        self.viewport_width = 1200
-        self.viewport_height = 1200
-        self.glClear()
-
-    def point(self, x, y):
-        self.framebuffer[y][x] = self.color
-=======
         self.width = 800
         self.height = 800
         self.viewport_x = 0
@@ -135,7 +109,6 @@ class Render(object):
 
     def point(self, x, y, color):
         self.framebuffer[y][x] = color
->>>>>>> eb246f8... Fixed error
 
     def glCreateWindow(self, width, height):
         self.height = height
@@ -148,21 +121,12 @@ class Render(object):
         self.viewport_width = width
 
     def glClear(self):
-<<<<<<< HEAD
-        self.framebuffer = [
-            [Dark for x in range(self.width)] for y in range(self.height)
-        ]
-
-    def glClearColor(self, r=1, g=1, b=1):
-        # Solo acepta valores en 1
-=======
         BLACK = color(0,0,0)
         self.framebuffer = [
             [BLACK for x in range(self.width)] for y in range(self.height)
         ]
 
     def glClearColor(self, r=1, g=1, b=1):
->>>>>>> eb246f8... Fixed error
         normalized = normalizeColorArray([r,g,b])
         clearColor = color(normalized[0], normalized[1], normalized[2])
 
@@ -173,11 +137,7 @@ class Render(object):
     def glVertex(self, x, y):
         final_x = round((x+1) * (self.viewport_width/2) + self.viewport_x)
         final_y = round((y+1) * (self.viewport_height/2) + self.viewport_y)
-<<<<<<< HEAD
-        self.point(final_x, final_y)
-=======
         self.point(final_x, final_y, self.color)
->>>>>>> eb246f8... Fixed error
 
     def glColor(self, r=0, g=0, b=0):
         normalized = normalizeColorArray([r,g,b])
@@ -187,10 +147,6 @@ class Render(object):
         real_coordinate = ((value+1) * (self.viewport_height/2) + self.viewport_y) if is_vertical else ((value+1) * (self.viewport_width/2) + self.viewport_x)
         return round(real_coordinate)
 
-<<<<<<< HEAD
-    def glLine(self, x0, y0, x1, y1) :
-#Referencia de la calse de dennis y su repositorio
-=======
     def triangle1(self, A, B, C, color=None):
         if A.y > B.y:
             A, B = B, A
@@ -240,7 +196,6 @@ class Render(object):
 
 
     def glLine(self, x0, y0, x1, y1) :
->>>>>>> eb246f8... Fixed error
         steep = abs(y1 - y0) > abs(x1 - x0)
 
         if steep:
@@ -259,45 +214,13 @@ class Render(object):
         threshold =  dx
 
         for x in range(x0, x1):
-<<<<<<< HEAD
-            self.point(y, x) if steep else self.point(x, y)
-=======
             self.point(y, x, self.color) if steep else self.point(x, y, self.color)
->>>>>>> eb246f8... Fixed error
             
             offset += 2*dy
 
             if offset >= threshold:
                 y += -1 if y0 > y1 else 1
                 threshold += 2*dx
-<<<<<<< HEAD
-#Clase trabajada en clase
-    def load(self, filename='default.obj', translate=[0,0], scale=[1,1]):
-        model = Obj(filename)
-
-        for face in model.faces:
-            vcount = len(face)
-
-            for j in range(vcount):
-                vi1 = face[j][0] - 1
-                vi2 = face[(j + 1) % vcount][0] - 1
-
-                v1 = model.vertices[vi1]
-                v2 = model.vertices[vi2]
-
-                x1 = round((v1[0] * scale[0]) + translate[0])
-                y1 = round((v1[1] * scale[1]) + translate[1])
-                x2 = round((v2[0] * scale[0]) + translate[0])
-                y2 = round((v2[1] * scale[1]) + translate[1])
-
-                self.glLine(x1, y1, x2, y2)
-
-
-    def glFinish(self, filename='output.bmp'):
-        # starts creating a new bmp file
-        f = open(filename, 'bw')
-
-=======
 
     def load(self, filename='default.obj', translate=[0,0], scale=[1,1]):
         model = Obj(filename)
@@ -404,14 +327,13 @@ class Render(object):
 
     def glFinish(self, filename='output.bmp'):
         f = open(filename, 'bw')
->>>>>>> eb246f8... Fixed error
+
         f.write(char('B'))
         f.write(char('M'))
         f.write(dword(14 + 40 + self.width * self.height * 3))
         f.write(dword(0))
         f.write(dword(14 + 40))
 
-        # image header
         f.write(dword(40))
         f.write(dword(self.width))
         f.write(dword(self.height))
@@ -424,16 +346,11 @@ class Render(object):
         f.write(dword(0))
         f.write(dword(0))
 
-        # Finishing placing points
         try:
             for x in range(self.height):
                 for y in range(self.width):
                     f.write(self.framebuffer[x][y])
         except:
-<<<<<<< HEAD
-            print('Tu OBJ es demasiado grande, porfavor escalalo o comprueba sus componentes de tamaño')
-=======
-            print('el obj puede que se exceda de tamano, ingresa otro porfavor')
->>>>>>> eb246f8... Fixed error
+            print('El OBJ es demasiado grande porfavor agrega otro')
 
         f.close()
